@@ -37,14 +37,14 @@ Then, you'll want to install pip if you don't have it already - pip is a python 
 
 You can use https://pypi.python.org/pypi to narrow down which packages you need to install, and what the appropriate version is for you.  It also usually includes links to documentation, so you can figure out how to use the packages you are installing!
 
-    `% sudo apt-get install python-pip`
+    % sudo apt-get install python-pip
 
 Now, let us check the version of pip that was installed.  If it is an older version, (prior to version 7) we should update pip with itself!
     
-    `% pip --version`
-    `% sudo pip install --upgrade pip`
-    `% source ~/.bashrc # or logout and log back in`
-    `% pip --version`
+    % pip --version
+    % sudo pip install --upgrade pip
+    % source ~/.bashrc # or logout and log back in
+    % pip --version
 
 Now that pip is installed, we should verify that we have a recent version of virtualenv.  This is a tool that does 2 things: it creates a sandbox that allows you to have different versions of different packages installed for different projects that you may be using.  
 
@@ -52,25 +52,23 @@ For instance, you may have a website that requires Django 1.4 but will not work 
 
 You can also control which version of python should be installed for this project.  Since that's a slightly more advanced feature, we won't cover it here.
 
-    `% virtualenv --version`
+    % virtualenv --version
 
 Let's make a new virtualenv.
 
-    `% mkdir project`
-    `% virtualenv .`
-    `% ls`
+    % mkdir project
+    % virtualenv .
+    % ls
 
 What we see here are the following directories:
 
-    ```
     drwxrwxr-x 2 vagrant vagrant 4096 Nov 15 19:24 bin
     drwxrwxr-x 3 vagrant vagrant 4096 Nov 15 19:24 lib
     drwxrwxr-x 2 vagrant vagrant 4096 Nov 15 19:24 local
-    ```
 
 These are all placed here by virtualenv.  Let's activate our virtualenvironment.
 
-    `% . bin/activate`
+    % . bin/activate
 
 This runs some bash shell commands that reorganize where your paths point, to prefer local resources when it comes to python.
 
@@ -89,26 +87,26 @@ Now, when you do `ls bin`, you will see a bunch of new django commands that are 
 
 Now we have Linux, Python and Django ready to go.  The rest of this presentation is based a bit on the django tutorial, but we'll be building a "list of lists" app, instead of a poll.
 
-    > You can see the Django tutorial here: https://docs.djangoproject.com/en/1.8/intro/tutorial01/
+> You can see the Django tutorial here: https://docs.djangoproject.com/en/1.8/intro/tutorial01/
 
 Now that Django's installed, lets create a new project:
 
-    `% django-admin startproject list_of_lists`
+    % django-admin startproject list_of_lists
 
 
 This creates a brand new project, called list_of_lists in a directory of the same name.
 
-    `% cd list_of_lists`
+    % cd list_of_lists
 
 When we enter this directory, we see a manage.py file and a directory called list of lists.
 
 First thing to do is make sure the database is ready, so lets migrate it:
 
-    `% python manage.py migrate`
+    % python manage.py migrate
 
 Once that's done, you should have a site you can use:
 
-    `% python manage.py runserver 0:8000`
+    % python manage.py runserver 0:8000
 
 Now, in your web browser, try to navigate to localhost:8000.  
 
@@ -125,11 +123,9 @@ Add this line to your vagrant config, right underneath the `config.vm.box` line:
 
 Let's restart the vagrant box, then log back in:
 
-``` 
       % vagrant halt
       % vagrant up 
       % vagrant ssh
-```
 
 Now, let's do the following:
 
@@ -349,5 +345,3 @@ The views we created use templates, so lets add those
     </form>
     </p>
     {% endblock %}
-
-
